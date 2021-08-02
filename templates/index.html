@@ -15,7 +15,9 @@
             nombre d'essai restant : {{.Attempts}}
         </p>
         <p>
-            etat actuel : {{.WordInProgress}}
+            etat actuel : {{range .WordInProgress}}
+                            {{.}}
+                        {{end}}
         </p>
     </div>
 
