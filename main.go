@@ -20,7 +20,7 @@ type HangmanData struct {
 }
 
 func pageChecker(w http.ResponseWriter, r *http.Request, page string) bool {
-	if r.URL.Path != page { // Checks if we are in  /ascii-art
+	if r.URL.Path != page { // Checks if we are in the right page
 		http.Error(w, "404 not found.", http.StatusNotFound) // Sends a 404 error (page not found)
 		return true
 	}
@@ -39,13 +39,15 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(error)
 	}
 
+	data := HangmanData{Attempts: 10, WordToFind: "HELLO", WordInProgress: "H_LL_"}
+
 	// Parsing data
-	// file.Execute(w, data)
+	file.Execute(w, data)
 
 	// Render template
-	if error := file.Execute(w, file); error != nil {
-		log.Fatal(error)
-	}
+	// if error := file.Execute(w, file); error != nil {
+	// 	log.Fatal(error)
+	// }
 }
 
 // /hangman page
@@ -54,16 +56,22 @@ func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	file, error := template.ParseFiles("./templates/hangman.html")
+	if r.Method == "POST" {
+		fmt.Println("C'est good")
 
-	if error != nil {
-		log.Fatal(error)
+		r.ParseForm()
+
+		if err := r.ParseForm(); err != nil {
+			fmt.Fprintf(w, "ParseForm() err: %v", err)
+			return
+		}
+		fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
+		letter := r.FormValue("letter")
+		fmt.Fprintf(w, "letter = %s\n", letter)
+
+		rootHandler(w, r)
 	}
 
-	// Render template
-	if error := file.Execute(w, file); error != nil {
-		log.Fatal(error)
-	}
 }
 
 func main() {
