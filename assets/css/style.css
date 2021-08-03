@@ -1,3 +1,57 @@
 body{
-    background-color: aqua;
+    background-color: rgb(7, 223, 223);
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+}
+
+#ToFind {
+    letter-spacing: 5px;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: black;
+    top: 100px;
+    left: 500px;
+}
+
+#Attempts {
+    letter-spacing: 5px;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: black;
+    top: 300px;
+    right: 205px;
+}
+
+.form-example {
+    width: 50%;
+    margin: 20px 0;
+}
+
+input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.choose{
+    top: -350px;
+    left: 500px;
+    height: 40px;
+    margin: 10px 0;
+}
+
+.submit {
+    background-color: green;
+    color:white;
+    margin: 5px 0;
+    top: -350px;
+    left: 500px;
+    height: 35px;
+    width: 775px;
 }
