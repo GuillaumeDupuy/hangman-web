@@ -93,6 +93,12 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Finito")
 	}
 
+	if data.Attempts == 0 || data.Attempts > 10 {
+		fmt.Println("Failed")
+		fmt.Println("The word was", data.WordToFind)
+		data.Attempts = 0
+	}
+
 	// Parsing data
 	file.Execute(w, data)
 
@@ -166,6 +172,11 @@ func buildWordInProgress(wordToFind string) []string {
 }
 
 func main() {
+	if len(os.Args[1:]) < 1 {
+		fmt.Println("Missing word file")
+		return
+	}
+
 	rand.Seed(time.Now().UnixNano())
 
 	// Open file to get word
