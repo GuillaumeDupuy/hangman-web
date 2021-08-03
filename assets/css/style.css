@@ -1,3 +1,8 @@
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 body{
     background-color: rgb(7, 223, 223);
 }
@@ -14,17 +19,17 @@ body{
     font-size: 40px;
     color: black;
     top: 100px;
-    left: 500px;
+    left: 450px;
 }
 
 #Attempts {
     letter-spacing: 5px;
-    position: relative;
+    position: absolute;
     text-transform: uppercase;
     font-size: 40px;
     color: black;
     top: 300px;
-    right: 205px;
+    right: 355px;
 }
 
 .form-example {
@@ -41,8 +46,8 @@ input {
 
 .choose{
     top: -350px;
-    left: 500px;
-    height: 40px;
+    left: 450px;
+    height: 35px;
     margin: 10px 0;
 }
 
@@ -51,7 +56,7 @@ input {
     color:white;
     margin: 5px 0;
     top: -350px;
-    left: 500px;
+    left: 450px;
     height: 35px;
-    width: 775px;
+    width: 780px;
 }
